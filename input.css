@@ -1,0 +1,6 @@
+@tailwind components;
+@tailwind utilities;
+
+a {
+	color: var(--link-color);
+}

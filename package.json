@@ -1,24 +1,41 @@
 {
-	"name": "obsidian-sample-plugin",
-	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"name": "obsidian-alfred",
+	"version": "0.0.1",
+	"description": "I plan on using this plugin to have a tighter integration with Alfred.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
-		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"version": "node version-bump.mjs && git add manifest.json versions.json"
+    "compile": "tsc -noEmit -skipLibCheck",
+    "build:bookmarklet": "tsc src/bookmarklet/index.ts && ./node_modules/.bin/bookmarklet src/bookmarklet/index.js src/bookmarklet/obsidian-clipper.min.js",
+    "build:bookmarkletgen": "node replace-bookmarklet-code.js",
+		"build": "npm run && npm run compile && npm run tailwindcss &&  node esbuild.config.mjs production",
+		"tailwindcss": "npx tailwindcss -i ./input.css -o ./styles.css",
+    "version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "jgchristopher",
 	"license": "MIT",
 	"devDependencies": {
-		"@types/node": "^16.11.6",
+		"@tsconfig/svelte": "3.0.0",
+		"@types/node": "16.11.6",
 		"@typescript-eslint/eslint-plugin": "5.29.0",
 		"@typescript-eslint/parser": "5.29.0",
+		"bookmarklet": "^3.0.0",
 		"builtin-modules": "3.3.0",
-		"esbuild": "0.17.3",
-		"obsidian": "latest",
+		"esbuild": "0.14.47",
+		"esbuild-svelte": "^0.7.3",
+		"eslint": "^8.34.0",
+		"obsidian": "^1.1.1",
+		"svelte": "3.55.1",
+		"svelte-eslint-parser": "^0.23.0",
+		"svelte-popperjs": "^1.3.2",
+		"svelte-preprocess": "5.0.1",
+		"tailwindcss": "^3.2.7",
 		"tslib": "2.4.0",
 		"typescript": "4.7.4"
+	},
+	"dependencies": {
+		"deepmerge-ts": "^4.3.0",
+		"obsidian-daily-notes-interface": "0.9.4"
 	}
 }

@@ -20,3 +20,8 @@ data.json
 
 # Exclude macOS Finder (System Explorer) View States
 .DS_Store
+
+src/bookmarklet/index.js
+src/bookmarklet/obsidian-clipper.min.js
+src/bookmarkletgenerator.ts
+src/bookmarklet/dist/bookmarklet.js
