@@ -1,10 +1,8 @@
-declare module "obsidian" {
-  interface View {
-    file: TFile;
-  }
+export interface EntryParameters {
+	data?: string;
+	header?: string;
 }
 
-export interface Parameters {
-  data?: string;
-  header?: string;
+export interface SearchParamters {
+	query: string;
 }
